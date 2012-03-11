@@ -51,8 +51,8 @@ class Thoughts:
 def pretty_print_thoughts(thoughts):
     for thought in thoughts:
         txt = thought['text']
-        uname = '' if thought['username'] is None else '@%s' %(thought['username'])
-        category = '' if thought['category'] is None else '(c)%s' %(thought['category'])
+        uname = '' if thought['username'] is '' else '@%s' %(thought['username'])
+        category = '' if thought['category'] is '' else '(c)%s' %(thought['category'])
         print "%s %s %s \n"%(txt, uname, category)
 def command_line_args():
     usage = "%prog [-f FILE] [-c CATEGORY] [-u USERNAME] [-l] [TEXT]"
