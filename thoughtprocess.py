@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import sys, json
+import sys, json, hashlib
 from optparse import OptionParser, OptionGroup
 
 class MaxCharsExceeded(Exception):
@@ -20,7 +20,7 @@ class Thoughts:
             if len(thought) > 140:
                 raise MaxCharsExceeded("Not more than 140 characters are allowed! Yours contain %s chars"%(len(thought)))
             thought_dict = {'text' : thought, 'category' : self.category,
-                            'username' : self.username}
+                            'username' : self.username, 'id' : hash_value(thought)}
             self.thoughts.append(thought_dict)
         except MaxCharsExceeded, e:
             print e.message
@@ -48,6 +48,8 @@ class Thoughts:
         self.thoughts = []
         file.close()
 
+def hash_value(text):
+    return hashlib.md5(text).hexdigest()
 def pretty_print_thoughts(thoughts):
     for thought in thoughts:
         txt = thought['text']
