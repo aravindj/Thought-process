@@ -1,10 +1,11 @@
-{"category": "thoughtprocess", "text": "Using thoughtprocess for thoughtprocess. Yay!", "username": "aravindj"}
-{"category": "thoughtprocess", "text": "Let thought.process file be a list of json objs instead of entire file to be json coz,it adds complexity while writing to the file", "username": "aravindj"}
-{"category": "thoughtprocess", "text": "thought.process file cud hv bn defined as csv.but i think being a list of json obj makes it easier to manipulate.May b correct.May b not.", "username": "aravindj"}
-{"category": "thoughtprocess", "text": "The big if condition in #get_thoughts method seems weird.Need an elegant way to code it.", "username": "aravindj"}
-{"category": "", "text": "Think an id field has to be associated to each thought.It will be useful is editing it.", "username": ""}
+{"category": "thoughtprocess", "text": "Using thoughtprocess for thoughtprocess. Yay!", "username": "aravindj","id": 0}
+{"category": "thoughtprocess", "text": "Let thought.process file be a list of json objs instead of entire file to be json coz,it adds complexity while writing to the file", "username": "aravindj","id":  1}
+{"category": "thoughtprocess", "text": "thought.process file cud hv bn defined as csv.but i think being a list of json obj makes it easier to manipulate.May b correct.May b not.", "username": "aravindj","id": 2}
+{"category": "thoughtprocess", "text": "The big if condition in #get_thoughts method seems weird.Need an elegant way to code it.", "username": "aravindj" ,"id" :    3 }
+{"category": "", "text": "Think an id field has to be associated to each thought.It will be useful is editing it.", "username": "","id": 4}
 {"category": "thoughtprocess", "text": "For id, hashlib can be used, but y not use python's own hash impl __hash__() ?", "username": "aravindj", "id": -562013721}
 {"category": "", "text": "For all thoughts, I am using the the category as thoughtprocess. Really donno wat to specify ther :-P.", "username": "", "id": -209685120}
 {"category": "thoughtprocess", "text": "Some Ids are negative numbers.But I guess its okay.", "username": "aravindj", "id": -464330131}
 {"category": "thoughtprocess", "text": "Just figured __hash__ will differ accross platform(32 bit/64 bit) since its obj's hash.So going back to hashlib.", "username": "aravindj", "id": -715947762}
 {"category": "thoughtprocess", "text": "ha! My code documentation ll only show d usage of hashlib and it ll not tell tat i considered inbuilt hash.thoughtprocess advantage :-P", "username": "aravindj", "id": "29b01bf11128fe770d704a294b226467"}
+{"category": "", "text": "Aha! Made the wierd if stm to less wierdness.", "username": "", "id": "42e0cdacdf317a4055246625900506e4"}
