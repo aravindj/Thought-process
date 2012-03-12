@@ -30,11 +30,8 @@ class Thoughts:
             with open(self.filename, 'r') as file:
                 for each_thought in file:
                     thought = json.loads(each_thought)
-                    
-                    #weird if stm. But I cant help it!
-                    if (self.category is '' and self.username is '') or \
-                        (thought['category'] is self.category is not '') or \
-                        (thought.username is self.username is not ''):
+                    if (self.category == '' or thought['category'] == self.category) and \
+                        (self.username ==  '' or thought['username'] == self.username):
                         thoughts.append(thought)
         except IOError:
             pass
@@ -52,10 +49,11 @@ def hash_value(text):
     return hashlib.md5(text).hexdigest()
 def pretty_print_thoughts(thoughts):
     for thought in thoughts:
+        tid = thought['id']
         txt = thought['text']
         uname = '' if thought['username'] is '' else '@%s' %(thought['username'])
         category = '' if thought['category'] is '' else '(c)%s' %(thought['category'])
-        print "%s %s %s (id)%s\n"%(txt, uname, category)
+        print "%s %s %s (id)%s\n"%(tid, txt, uname, category)
 def command_line_args():
     usage = "%prog [-f FILE] [-c CATEGORY] [-u USERNAME] [-l] [TEXT]"
     parser = OptionParser(usage = usage)
