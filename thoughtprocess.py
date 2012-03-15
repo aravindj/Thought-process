@@ -6,9 +6,8 @@ from optparse import OptionParser, OptionGroup
 class MaxCharsExceeded(Exception):
     pass
 
-class MandatoryArgMissing(Exception):
-    pass
 class Thoughts:
+
     def __init__(self, category=None, filename=None, username=''):
         self.category = category or ''
         self.filename = filename or "thought.process"
@@ -24,6 +23,7 @@ class Thoughts:
             self.thoughts.append(thought_dict)
         except MaxCharsExceeded, e:
             print e.message
+
     def get_thoughts(self):
         thoughts = []
         try:
@@ -47,15 +47,20 @@ class Thoughts:
 
 def hash_value(text):
     return hashlib.md5(text).hexdigest()
-def pretty_print_thoughts(thoughts):
+
+def pretty_print_thoughts(thoughts, verbose=False):
     for thought in thoughts:
-        tid = thought['id']
+        tid = '(id)%s'% (thought['id'])
         txt = thought['text']
         uname = '' if thought['username'] is '' else '@%s' %(thought['username'])
         category = '' if thought['category'] is '' else '(c)%s' %(thought['category'])
-        print "%s %s %s (id)%s\n"%(tid, txt, uname, category)
+        if verbose:
+            print "%s %s %s %s\n"%(tid, txt, uname, category)
+        else:
+            print "%s %s %s\n"%(txt, uname, category)
+
 def command_line_args():
-    usage = "%prog [-f FILE] [-c CATEGORY] [-u USERNAME] [-l] [TEXT]"
+    usage = "%prog [-f FILE] [-c CATEGORY] [-u USERNAME] [-lv] [TEXT]"
     parser = OptionParser(usage = usage)
     parser.add_option("-c", "--category", dest="category",
                     help="Cateogry of the thought")
@@ -66,7 +71,10 @@ def command_line_args():
     parser.add_option("-l", "--list", dest="list", default = False,
                     action = "store_true",
                     help="List the thoughts. If used with -c, -f or -u then appropriate thoughts alone are listed.")
+    parser.add_option("-v", "--verbose", dest="verbose", default = False,
+                    action = "store_true", help="Get more details")
     return parser
+
 if __name__ == '__main__':
     parser = command_line_args()
     (options, args) = parser.parse_args()
@@ -81,7 +89,7 @@ if __name__ == '__main__':
         thoughts.add_thought(arg)
         thoughts.save_thought()
     elif options.list:
-        pretty_print_thoughts(thoughts.get_thoughts())
+        pretty_print_thoughts(thoughts.get_thoughts(), options.verbose)
         
     else:
-        print "Usage : %s [-f FILE] [-c CATEGORY] [-u USERNAME] [-l] [TEXT]"% (sys.argv[0])
+        print "Usage : %s [-f FILE] [-c CATEGORY] [-u USERNAME] [-lv] [TEXT]"% (sys.argv[0])
