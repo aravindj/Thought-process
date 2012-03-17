@@ -10,8 +10,12 @@ Add the thought.process file to each module of your project and keep track of
 the ideas you come across while you code. Dont forget to version control it!
 
 Installation:
-    Add the following line to your .bashrc
+
+Add the following line to your .bashrc
+    
     alias thoughtprocess='python ~/path/to/thoughtprocess.py'
+
+    
 Usage:
 
     ./thoughtprocess [-f FILE] [-c CATEGORY] [-u USERNAME] [-s STRING] [-lv] [TEXT]
