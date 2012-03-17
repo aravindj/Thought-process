@@ -24,14 +24,15 @@ class Thoughts:
         except MaxCharsExceeded, e:
             print e.message
 
-    def get_thoughts(self):
+    def get_thoughts(self, search_string = None):
         thoughts = []
         try:
             with open(self.filename, 'r') as file:
                 for each_thought in file:
                     thought = json.loads(each_thought)
                     if (self.category == '' or thought['category'] == self.category) and \
-                        (self.username ==  '' or thought['username'] == self.username):
+                        (self.username ==  '' or thought['username'] == self.username) and \
+                        (search_string is None or search_string in thought['text']):
                         thoughts.append(thought)
         except IOError:
             pass
@@ -55,7 +56,7 @@ def pretty_print_thoughts(thoughts, verbose=False):
         uname = '' if thought['username'] is '' else '@%s' %(thought['username'])
         category = '' if thought['category'] is '' else '(c)%s' %(thought['category'])
         if verbose:
-            print "%s %s %s %s\n"%(tid, txt, uname, category)
+            print "%s %s %s %s\n"%(txt, uname, category, tid)
         else:
             print "%s %s %s\n"%(txt, uname, category)
 
@@ -68,6 +69,8 @@ def command_line_args():
                     help="Username. See to that it contains no space")
     parser.add_option("-f", "--file", dest="filename", default = 'thought.process',
                     help="Target filename.")
+    parser.add_option("-s", "--search", dest="search_string",
+                    help="List the thoughts containing particular string.")
     parser.add_option("-l", "--list", dest="list", default = False,
                     action = "store_true",
                     help="List the thoughts. If used with -c, -f or -u then appropriate thoughts alone are listed.")
@@ -88,8 +91,9 @@ if __name__ == '__main__':
     if arg:
         thoughts.add_thought(arg)
         thoughts.save_thought()
+    elif options.search_string:
+        pretty_print_thoughts(thoughts.get_thoughts(options.search_string), options.verbose)
     elif options.list:
         pretty_print_thoughts(thoughts.get_thoughts(), options.verbose)
-        
     else:
-        print "Usage : %s [-f FILE] [-c CATEGORY] [-u USERNAME] [-lv] [TEXT]"% (sys.argv[0])
+        print "Usage : %s [-f FILE] [-c CATEGORY] [-u USERNAME] [-s STRING] [-lv] [TEXT]"% (sys.argv[0])
