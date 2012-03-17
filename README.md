@@ -9,19 +9,19 @@ intends to do. In short, its like **Twitter for your code!**
 Add the thought.process file to each module of your project and keep track of
 the ideas you come across while you code. Dont forget to version control it!
 
-Installation:
+**Installation:**
 
 Add the following line to your .bashrc
     
     alias thoughtprocess='python ~/path/to/thoughtprocess.py'
 
     
-Usage:
+**Usage:**
 
     ./thoughtprocess [-f FILE] [-c CATEGORY] [-u USERNAME] [-s STRING] [-lv] [TEXT]
     
-TODO:
+**TODO:**
 
-    * Add an --edit options
-    * Use distutils for easy installation
-    * Add test cases
+1. Add an --edit options
+2. Use distutils for easy installation
+3. Add test cases
