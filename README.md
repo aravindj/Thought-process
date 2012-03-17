@@ -15,3 +15,9 @@ Installation:
 Usage:
 
     ./thoughtprocess [-f FILE] [-c CATEGORY] [-u USERNAME] [-s STRING] [-lv] [TEXT]
+    
+TODO:
+
+    * Add an --edit options
+    * Use distutils for easy installation
+    * Add test cases
