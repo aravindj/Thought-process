@@ -7,7 +7,7 @@ you had, while you code, very near to the code itself? This is what this project
 intends to do. In short, its like **Twitter for your code!**
 
 Add the thought.process file to each module of your project and keep track of
-the ideas you come across while you code.
+the ideas you come across while you code. Dont forget to version control it!
 
 Installation:
     Add the following line to your .bashrc
