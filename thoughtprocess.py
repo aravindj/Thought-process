@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import sys, json, hashlib
+import sys, json, hashlib, fileinput
 from optparse import OptionParser, OptionGroup
 
 class MaxCharsExceeded(Exception):
@@ -38,7 +38,7 @@ class Thoughts:
             pass
         return thoughts
     
-    def save_thought(self):
+    def save_thoughts(self):
         file = open(self.filename, 'a')
         for each_thought in self.thoughts:
             file.write(json.dumps(each_thought))
@@ -90,7 +90,7 @@ if __name__ == '__main__':
     thoughts = Thoughts(**arguments)
     if arg:
         thoughts.add_thought(arg)
-        thoughts.save_thought()
+        thoughts.save_thoughts()
     elif options.search_string:
         pretty_print_thoughts(thoughts.get_thoughts(options.search_string), options.verbose)
     elif options.list:
