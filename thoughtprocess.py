@@ -24,6 +24,25 @@ class Thoughts:
         except MaxCharsExceeded, e:
             print e.message
 
+    def edit_thought(self, tid, text):
+        try:
+            file = fileinput.input(self.filename, inplace = 1)
+            for line in file:
+                thought = json.loads(line)
+                if thought["id"] == tid:
+                    thought["id"] = hash_value(text)
+                    thought["text"] = text
+                    thought["category"] = self.category or thought["category"]
+                    thought["username"] = self.username or thought["username"]
+                thought = json.dumps(thought)
+                sys.stdout.write(thought + "\n")
+            file.close()
+        except Exception, e:
+            if file:
+                file.close()
+            print "Oops! Some error occured."
+            print e
+
     def get_thoughts(self, search_string = None):
         thoughts = []
         try:
@@ -69,6 +88,8 @@ def command_line_args():
                     help="Username. See to that it contains no space")
     parser.add_option("-f", "--file", dest="filename", default = 'thought.process',
                     help="Target filename.")
+    parser.add_option("-e", "--edit", dest="id",
+                    help="Id to edit")
     parser.add_option("-s", "--search", dest="search_string",
                     help="List the thoughts containing particular string.")
     parser.add_option("-l", "--list", dest="list", default = False,
@@ -88,9 +109,11 @@ if __name__ == '__main__':
                 'username' : options.username
     }
     thoughts = Thoughts(**arguments)
-    if arg:
+    if arg and not options.id:
         thoughts.add_thought(arg)
         thoughts.save_thoughts()
+    elif arg and options.id:
+        thoughts.edit_thought(options.id, arg)
     elif options.search_string:
         pretty_print_thoughts(thoughts.get_thoughts(options.search_string), options.verbose)
     elif options.list:
