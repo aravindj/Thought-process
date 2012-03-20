@@ -9,3 +9,8 @@
 {"category": "thoughtprocess", "text": "Just figured __hash__ will differ accross platform(32 bit/64 bit) since its obj's hash.So going back to hashlib.", "username": "aravindj", "id": -715947762}
 {"category": "thoughtprocess", "text": "ha! My code documentation ll only show d usage of hashlib and it ll not tell tat i considered inbuilt hash.thoughtprocess advantage :-P", "username": "aravindj", "id": "29b01bf11128fe770d704a294b226467"}
 {"category": "", "text": "Aha! Made the wierd if stm to less wierdness.", "username": "", "id": "42e0cdacdf317a4055246625900506e4"}
+{"category": "thoughtprocess", "text": "Should i use fileinput module for --edit option? or should i get all thoughts and edit one?", "username": "aravindj", "id": "ddc1ba0318811953dbf2f37cfc8d6207"}
+{"category": "thoughtprocess", "text": "fileinput module seems a gud fit,coz if ther r 2 many entries, getting all of them in memory is not nice", "username": "aravindj", "id": "e7cc72c2a65b9c56a318c6878dadf55c"}
+{"category": "thoughtprocess", "text": "Suppose i use a fileinput module in a method called edit_thought.Shud i have it in Thoughts class? It doesn't luk to be better oop", "username": "aravindj", "id": "da2af95e6cf9326c5fd4238afbd39908"}
+{"category": "thoughtprocess", "text": "Let me have edit_thought method outside the class. will luk into better oop design later :P", "username": "aravindj", "id": "eb6f9582adb802301eb12dccf0f5b86e"}
+{"category": "thoughtprocess", "text": "Or else let me have the edit_thought in class itself, coz it seems to be logically correct", "username": "aravindj", "id": "81aa94afe4f59e5f600bbc2053f9f2c7"}
