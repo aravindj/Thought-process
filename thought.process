@@ -14,3 +14,5 @@
 {"category": "thoughtprocess", "text": "Suppose i use a fileinput module in a method called edit_thought.Shud i have it in Thoughts class? It doesn't luk to be better oop", "username": "aravindj", "id": "da2af95e6cf9326c5fd4238afbd39908"}
 {"category": "thoughtprocess", "text": "Let me have edit_thought method outside the class. will luk into better oop design later :P", "username": "aravindj", "id": "eb6f9582adb802301eb12dccf0f5b86e"}
 {"category": "thoughtprocess", "text": "Or else let me have the edit_thought in class itself, coz it seems to be logically correct", "username": "aravindj", "id": "81aa94afe4f59e5f600bbc2053f9f2c7"}
+{"category": "thoughtprocess", "text": "Having --reply option will be great.", "username": "aravindj", "id": "52f3a2b3f44ec7d1d88ed73b69ed4262"}
+{"category": "thoughtprocess", "text": "Also, having a simple web i/f for viewing these thoughts will be great.", "username": "aravindj", "id": "e18557f4bc03e67d3c9d2b1fad7cec13"}
