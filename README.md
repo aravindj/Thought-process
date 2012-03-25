@@ -22,6 +22,8 @@ Add the following line to your .bashrc
     
 **TODO:**
 
-1. Add an --edit options
-2. Use distutils for easy installation
-3. Add test cases
+1. Use distutils for easy installation
+2. Add test cases
+3. --reply option has to be provided to link thoughts
+4. Have to provide a bottle.py based web interface for viewing and
+    editing. Something like twitter running in your localhost!
